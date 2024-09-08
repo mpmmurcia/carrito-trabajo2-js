@@ -18,7 +18,7 @@
     padding: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.228);
     transition: transform 0.2s;
-    margin: 10px; /* Margen alrededor de cada tarjeta para separación */
+    margin: 10px; 
 }
 
 .tarjeta-producto:hover {
@@ -129,7 +129,9 @@ footer {
 }
 
 /* Estilo para el botón de pagar */
-#pagar-btn {
+
+
+#pagar-btn  {
     padding: 10px 20px; /* Tamaño del botón */
     background-color: #0066cc; /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
@@ -146,17 +148,14 @@ footer {
 
 /*boton de volver a carrito y volver a productos*/
 
-.boton {  padding: 10px 20px; /* Tamaño del botón */
+.botones {  text-align: center;
+    padding: 10px 25px; /* Tamaño del botón */
     background-color: #0066cc; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
+    margin: 0 auto; /* Centra el contenedor en el ancho disponible */
+    padding: 10px; /* Padding interno para el contenedor */
     border: none; /* Quita el borde del botón */
     border-radius: 5px; /* Bordes redondeados del botón */
     cursor: pointer; /* Cambia el cursor cuando se pasa por encima del botón */
-    font-size: 16px; /* Tamaño de la fuente del botón */
+    font-size: 25px; /* Tamaño de la fuente del botón */
   
-}
-
-.boton:hover {
-    background-color: #0056b3;
-    align-content: center;
 }
