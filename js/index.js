@@ -1,4 +1,4 @@
-// Datos de ejemplo para los productos
+/*datos de productos*/ 
 const productos = [
     { id: 1, nombre: "Zapatillas Adidas", img: "./img/1.jpg", precio: 1000 },
     { id: 2, nombre: "Zapatillas Jaguar", img: "./img/2.jpg", precio: 2000 },
@@ -8,10 +8,10 @@ const productos = [
 ];
 
 
-// Función para crear tarjetas de productos
+/*tarjeta productos*/ 
 function crearTarjetasProductosInicio(productos) {
     const contenedorTarjetas = document.getElementById("productos-conteiner");
-    contenedorTarjetas.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevas tarjetas
+    contenedorTarjetas.innerHTML = ''; 
 
     productos.forEach(producto => {
         const nuevaTarjeta = document.createElement("div");
@@ -42,7 +42,7 @@ function crearTarjetasProductosInicio(productos) {
             const cantidad = parseInt(cantidadInput.value);
             if (cantidad > 0) {
                 agregarAlCarrito(producto, cantidad);
-                cantidadInput.value = 0; // Reiniciar el contador a 0 después de agregar
+                cantidadInput.value = 0; 
             }
         });
     });
@@ -50,24 +50,22 @@ function crearTarjetasProductosInicio(productos) {
 
 
 
-
-// Función para obtener el carrito desde localStorage
 function obtenerCarrito() {
     return JSON.parse(localStorage.getItem("carrito")) || [];
 }
 
-// Función para guardar el carrito en localStorage
+
 function guardarCarrito(carrito) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-// Función para agregar producto al carrito
+
 function agregarAlCarrito(producto, cantidad) {
     const carrito = obtenerCarrito();
     const productoExistente = carrito.find(p => p.id === producto.id);
 
     if (productoExistente) {
-        productoExistente.cantidad += cantidad; // Ajustar la cantidad
+        productoExistente.cantidad += cantidad; 
     } else {
         carrito.push({ ...producto, cantidad });
     }
@@ -76,7 +74,7 @@ function agregarAlCarrito(producto, cantidad) {
     actualizarContadorCarrito();
 }
 
-// Función para verificar si el producto está en el carrito
+
 function estaEnElCarrito(producto) {
     const carrito = obtenerCarrito();
     return carrito.some(p => p.id === producto.id);
@@ -84,7 +82,7 @@ function estaEnElCarrito(producto) {
 
 
 
-// Función para actualizar el contador del carrito en la interfaz
+
 function actualizarContadorCarrito() {
     const contador = document.getElementById("contador-carrito");
     if (contador) {
@@ -93,13 +91,13 @@ function actualizarContadorCarrito() {
     }
 }
 
-// Inicializar la página de productos
+
 function inicializarPaginaProductos() {
     crearTarjetasProductosInicio(productos);
     actualizarContadorCarrito();
 }
 
-// Manejar la carga de la página
+
 window.addEventListener('load', () => {
     const path = window.location.pathname;
     if (path.endsWith('index.html')) {
