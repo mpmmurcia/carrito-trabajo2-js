@@ -1,42 +1,3 @@
-/* Estilo común para ambos contenedores */
-#productos-conteiner,
-#carrito-contenedor {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    gap: 20px; 
-    margin: 0 auto; 
-    padding: 10px; 
-}
-
-/* Estilo para las tarjetas de productos */
-.tarjeta-producto {
-    max-width: 300px; 
-    width: 100%;
-    text-align: center;
-    background-color: rgb(158, 99, 99);
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.228);
-    transition: transform 0.2s;
-    margin: 10px; 
-}
-
-.tarjeta-producto:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.228);
-}
-
-.tarjeta-producto img {
-    width: 100%;
-    height: auto; 
-    object-fit: cover; 
-}
-
-.tarjeta-producto h3,
-.tarjeta-producto p {
-    margin: 10px 0; 
-}
-
 /* Estilos globales */
 :root {
     --color-acento: #ee6130;
@@ -48,8 +9,13 @@
 
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin: 10px;
     background-color: rgb(77, 88, 88);
+}
+
+/* Quitar el scroll horizontal */
+body {
+    overflow-x: hidden;
+    margin: 0; 
 }
 
 h3, p {
@@ -101,8 +67,56 @@ header nav img {
     height: 25px; 
 }
 
-.carrito-compras {
+
+
+#carrito-contenedor img, #productos-conteiner img {
+    width: 100%;
+    height: auto; 
+    max-height: 200px; 
+    object-fit: cover; 
     
+}
+
+/* Estilo para las tarjetas de productos */
+.tarjeta-producto {
+    max-width: 300px; 
+    width: 100%;
+    text-align: center;
+    background-color: rgb(158, 99, 99);
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.228);
+    transition: transform 0.2s;
+    margin: 10px; 
+}
+
+.tarjeta-producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+#productos-conteiner,
+#carrito-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 20px; 
+    margin: 0 auto; 
+    padding: 10px; 
+    
+}
+
+
+
+
+.tarjeta-producto h3,
+.tarjeta-producto p {
+    margin: 10px 0; 
+}
+
+
+
+.carrito-compras {
     text-align: center; 
     margin: 20px 0;
     font-size: 5em; 
@@ -121,7 +135,6 @@ footer {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-
 #total-container {
     text-align: center; 
     margin-top: 20px; 
@@ -130,8 +143,6 @@ footer {
 }
 
 /* Estilo para el botón de pagar */
-
-
 #pagar-btn  {
     padding: 10px 20px; 
     background-color: #0066cc; 
@@ -146,21 +157,17 @@ footer {
     background-color: #005bb5; 
 }
 
-
-/*boton de volver a carrito y volver a productos*/
-
-.botones {  text-align: center;
+/* Botón de volver a carrito y volver a productos */
+.botones {  
+    text-align: center;
     padding: 10px 25px; 
     background-color: #0066cc; 
     margin: 0 auto; 
-    padding: 10px; 
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
     font-size: 25px; 
- 
 }
-
 
 .carrito-compras {
     font-size: 6rem;
@@ -173,12 +180,53 @@ footer {
     from {
         transform: rotate(0deg);
     }
-   
 }
 
 @keyframes bounce {
-   
     50% {
         transform: translateY(-15px);
+    }
+}
+
+/* Tablets y pantallas más pequeñas */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #logo {
+        margin: 0;
+        height: 80px; 
+    }
+
+    #nav {
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    .tarjeta-producto {
+        max-width: 90%; 
+    }
+
+    .carrito-compras {
+        font-size: 4rem; 
+    }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+    .tarjeta-producto {
+        max-width: 100%; 
+        margin: 5px; 
+    }
+
+    .carrito-compras {
+        font-size: 3rem; 
+    }
+
+    button, #pagar-btn, .botones {
+        font-size: 14px; 
+        padding: 8px 16px; 
     }
 }
