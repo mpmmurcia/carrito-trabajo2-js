@@ -1,21 +1,23 @@
 /* Estilos globales */
-:root {
-    --color-acento: #ee6130;
-    --color-acento-claro: #ee613033;
-    --color-texto: black;
-    --border-color: black; 
-    --shadow-color: rgba(0, 0, 0, 0.5); 
-}
+
 
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color: rgb(77, 88, 88);
+    background-color: rgb(88, 77, 77);
 }
 
 /* Quitar el scroll horizontal */
 body {
     overflow-x: hidden;
     margin: 0; 
+}
+
+:root {
+    --color-acento: #eb2020;
+    --color-acento-claro: #cc644133;
+    --color-texto: black;
+    --border-color: black; 
+    --shadow-color: rgba(0, 0, 0, 0.5); 
 }
 
 h3, p {
@@ -74,7 +76,8 @@ header nav img {
     height: auto; 
     max-height: 200px; 
     object-fit: cover; 
-    
+   
+
 }
 
 /* Estilo para las tarjetas de productos */
@@ -82,10 +85,8 @@ header nav img {
     max-width: 300px; 
     width: 100%;
     text-align: center;
-    background-color: rgb(158, 99, 99);
+    background-color: rgb(158, 77, 77);
     padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.228);
-    transition: transform 0.2s;
     margin: 10px; 
 }
 
