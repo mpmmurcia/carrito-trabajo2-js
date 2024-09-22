@@ -1,12 +1,11 @@
 /*datos de productos*/ 
-const productos = [
+const productos = [  
     { id: 1, nombre: "Zapatillas Adidas", img: "./img/1.jpg", precio: 1000 },
     { id: 2, nombre: "Zapatillas Jaguar", img: "./img/2.jpg", precio: 2000 },
     { id: 3, nombre: "Zapatillas Nike", img: "./img/3.jpg", precio: 3000 },
     { id: 4, nombre: "Zapatillas Puma", img: "./img/4.jpg", precio: 2500 },
     { id: 5, nombre: "Zapatillas Topper", img: "./img/5.jpg", precio: 3500 }
 ];
-
 
 /*tarjeta productos*/ 
 function crearTarjetasProductosInicio(productos) {
@@ -48,17 +47,13 @@ function crearTarjetasProductosInicio(productos) {
     });
 }
 
-
-
 function obtenerCarrito() {
     return JSON.parse(localStorage.getItem("carrito")) || [];
 }
 
-
 function guardarCarrito(carrito) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
-
 
 function agregarAlCarrito(producto, cantidad) {
     const carrito = obtenerCarrito();
@@ -74,37 +69,17 @@ function agregarAlCarrito(producto, cantidad) {
     actualizarContadorCarrito();
 }
 
-
-function estaEnElCarrito(producto) {
-    const carrito = obtenerCarrito();
-    return carrito.some(p => p.id === producto.id);
-}
-
-
-
-
 function actualizarContadorCarrito() {
     const contador = document.getElementById("contador-carrito");
     if (contador) {
-        const totalCantidad = obtenerCarrito().reduce((total, producto) => total + (producto.cantidad || 1), 0);
+        const totalCantidad = obtenerCarrito().reduce((total, producto) => total + (producto.cantidad || 0), 0);
         contador.textContent = totalCantidad;
     }
 }
 
-
-function inicializarPaginaProductos() {
-    crearTarjetasProductosInicio(productos);
-    actualizarContadorCarrito();
-}
-
-
-window.addEventListener('load', () => {
-    const path = window.location.pathname;
-    if (path.endsWith('index.html')) {
-        inicializarPaginaProductos();
-    }
-});
-
+// Aquí llamamos a la función directamente
+crearTarjetasProductosInicio(productos);
+actualizarContadorCarrito();
 
 
 
