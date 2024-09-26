@@ -1,5 +1,5 @@
-/*datos de productos*/ 
-const productos = [  
+/* datos de productos */
+const productos = [
     { id: 1, nombre: "Zapatillas Adidas", img: "./img/1.jpg", precio: 1000 },
     { id: 2, nombre: "Zapatillas Jaguar", img: "./img/2.jpg", precio: 2000 },
     { id: 3, nombre: "Zapatillas Nike", img: "./img/3.jpg", precio: 3000 },
@@ -7,10 +7,10 @@ const productos = [
     { id: 5, nombre: "Zapatillas Topper", img: "./img/5.jpg", precio: 3500 }
 ];
 
-/*tarjeta productos*/ 
+/* tarjeta productos */
 function crearTarjetasProductosInicio(productos) {
     const contenedorTarjetas = document.getElementById("productos-conteiner");
-    contenedorTarjetas.innerHTML = ''; 
+    contenedorTarjetas.innerHTML = '';
 
     productos.forEach(producto => {
         const nuevaTarjeta = document.createElement("div");
@@ -22,7 +22,7 @@ function crearTarjetasProductosInicio(productos) {
             <p>$${producto.precio}</p>
             <div class="contador">
                 <button class="decrementar">-</button>
-                <input type="number" class="cantidad" value="0" min="0">
+                <input type="number" class="cantidad" value="0" min="0" readonly>
                 <button class="incrementar">+</button>
             </div>
             <button class="agregar">Agregar al carrito</button>
@@ -41,7 +41,7 @@ function crearTarjetasProductosInicio(productos) {
             const cantidad = parseInt(cantidadInput.value);
             if (cantidad > 0) {
                 agregarAlCarrito(producto, cantidad);
-                cantidadInput.value = 0; 
+                cantidadInput.value = 0;
             }
         });
     });
@@ -60,7 +60,7 @@ function agregarAlCarrito(producto, cantidad) {
     const productoExistente = carrito.find(p => p.id === producto.id);
 
     if (productoExistente) {
-        productoExistente.cantidad += cantidad; 
+        productoExistente.cantidad += cantidad;
     } else {
         carrito.push({ ...producto, cantidad });
     }
@@ -77,9 +77,9 @@ function actualizarContadorCarrito() {
     }
 }
 
-// Aquí llamamos a la función directamente
 crearTarjetasProductosInicio(productos);
 actualizarContadorCarrito();
+
 
 
 

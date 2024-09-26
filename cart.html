@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trabajo-2 - Murcia Marcelo</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script defer src="./js/index.js"></script>
     <script defer src="./js/carrito.js"></script> 
 </head>
@@ -18,7 +18,7 @@
             <div id="opciones">
                 <a href="#">Estilo</a>
                 <a href="#">Zapatos</a>
-                <a href="./cart.html"><img src="./img/img.carrito.png" alt="carrito de compras"></a>
+                <a href="/cart.html"><img src="./img/img.carrito.png" alt="carrito de compras"></a>
             </div>
         </nav>
     </header>
@@ -31,9 +31,11 @@
         <div id="total-container">
             <h2 id="carrito-vacio" style="display: none;">El carrito está vacío</h2>
             <p>Total: $<span id="total-costo">0</span></p>
+            <button id="vaciar-carrito-btn">Vaciar Carrito</button>
             <button id="pagar-btn">Pagar</button>
             <button id="volver-galeria-btn" onclick="location.href='./index.html'">Volver a Galería</button>
         </div>
+        
         
 
 

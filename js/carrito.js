@@ -14,6 +14,13 @@ function eliminarDelCarrito(producto) {
     actualizarContadorCarrito();
 }
 
+function vaciarCarrito() {
+    // Elimina el carrito del localStorage
+    localStorage.removeItem("carrito");
+    // Actualiza la vista del carrito en la página
+    actualizarCarritoEnPagina();
+}
+
 function calcularTotal() {
     const carrito = obtenerCarrito();
     return carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
@@ -22,7 +29,7 @@ function calcularTotal() {
 function mostrarCarrito() {
     const carrito = obtenerCarrito();
     const contenedorCarrito = document.getElementById("carrito-contenedor");
-    contenedorCarrito.innerHTML = ''; 
+    contenedorCarrito.innerHTML = '';
 
     if (carrito.length === 0) {
         document.getElementById("carrito-vacio").style.display = "block";
@@ -38,7 +45,7 @@ function mostrarCarrito() {
                 <p>$${producto.precio}</p>
                 <div class="contador">
                     <button class="decrementar">-</button>
-                    <input type="number" class="cantidad" value="${producto.cantidad}" min="0">
+                    <input type="number" class="cantidad" value="${producto.cantidad}" min="0" readonly>
                     <button class="incrementar">+</button>
                 </div>
                 <button class="eliminar">Eliminar</button>
@@ -63,8 +70,14 @@ function mostrarCarrito() {
 }
 
 function manejarPago() {
-    alert("El total a pagar es: $" + calcularTotal().toFixed(2));
+    const carrito = obtenerCarrito();
+    if (carrito.length === 0) {
+        alert("El carrito está vacío. Agrega productos antes de proceder al pago.");
+    } else {
+        alert("El total a pagar es: $" + calcularTotal().toFixed(2));
+    }
 }
+
 
 function actualizarContadorCarrito() {
     const contador = document.getElementById("contador-carrito");
@@ -81,8 +94,8 @@ function actualizarCantidad(producto, nuevaCantidad) {
     if (productoExistente) {
         productoExistente.cantidad = parseInt(nuevaCantidad);
         guardarCarrito(carrito);
-        mostrarCarrito(); // Actualiza la visualización
-        actualizarContadorCarrito(); // Actualiza el contador
+        mostrarCarrito();
+        actualizarContadorCarrito();
     }
 }
 
@@ -92,16 +105,21 @@ function actualizarCarritoEnPagina() {
 
 function inicializarPaginaCarrito() {
     mostrarCarrito();
-    actualizarContadorCarrito(); 
+    actualizarContadorCarrito();
 
     const pagarBtn = document.getElementById("pagar-btn");
     if (pagarBtn) {
         pagarBtn.addEventListener("click", manejarPago);
     }
+
+    const vaciarBtn = document.getElementById("vaciar-carrito-btn");
+    if (vaciarBtn) {
+        vaciarBtn.addEventListener("click", vaciarCarrito);
+    }
 }
 
-// Llama a la función de inicialización cuando el DOM esté completamente cargado
 inicializarPaginaCarrito();
+
 
 
 
