@@ -15,9 +15,7 @@ function eliminarDelCarrito(producto) {
 }
 
 function vaciarCarrito() {
-    // Elimina el carrito del localStorage
     localStorage.removeItem("carrito");
-    // Actualiza la vista del carrito en la página
     actualizarCarritoEnPagina();
 }
 
@@ -73,11 +71,27 @@ function manejarPago() {
     const carrito = obtenerCarrito();
     if (carrito.length === 0) {
         alert("El carrito está vacío. Agrega productos antes de proceder al pago.");
+        return;
+    }
+
+    const nombre = prompt("Ingrese su nombre:");
+    const apellido = prompt("Ingrese su apellido:");
+    const email = prompt("Ingrese su correo electrónico:");
+
+    if (nombre && apellido && email) {
+        const total = calcularTotal().toFixed(2);
+        const recibo = `
+            Recibo de Compra:
+            Nombre: ${nombre}
+            Apellido: ${apellido}
+            Email: ${email}
+            Total: $${total}
+        `;
+        alert(recibo);
     } else {
-        alert("El total a pagar es: $" + calcularTotal().toFixed(2));
+        alert("Por favor, complete todos los campos.");
     }
 }
-
 
 function actualizarContadorCarrito() {
     const contador = document.getElementById("contador-carrito");
@@ -119,9 +133,6 @@ function inicializarPaginaCarrito() {
 }
 
 inicializarPaginaCarrito();
-
-
-
 
 
 

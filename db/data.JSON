@@ -1,0 +1,7 @@
+[
+    { "id": 1, "nombre": "Zapatillas Adidas", "img": "./img/1.jpg", "precio": 1000 },
+    { "id": 2, "nombre": "Zapatillas Jaguar", "img": "./img/2.jpg", "precio": 2000 },
+    { "id": 3, "nombre": "Zapatillas Nike", "img": "./img/3.jpg", "precio": 3000 },
+    { "id": 4, "nombre": "Zapatillas Puma", "img": "./img/4.jpg", "precio": 2500 },
+    { "id": 5, "nombre": "Zapatillas Topper", "img": "./img/5.jpg", "precio": 3500 }
+]
