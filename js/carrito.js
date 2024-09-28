@@ -70,7 +70,6 @@ function mostrarCarrito() {
 function manejarPago() {
     const carrito = obtenerCarrito();
     if (carrito.length === 0) {
-        Swal.fire('El carrito está vacío.'); // Mensaje si el carrito está vacío
         return;
     }
     
