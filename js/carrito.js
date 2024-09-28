@@ -70,28 +70,73 @@ function mostrarCarrito() {
 function manejarPago() {
     const carrito = obtenerCarrito();
     if (carrito.length === 0) {
-        alert("El carrito está vacío. Agrega productos antes de proceder al pago.");
+        Swal.fire('El carrito está vacío.'); // Mensaje si el carrito está vacío
         return;
     }
-
-    const nombre = prompt("Ingrese su nombre:");
-    const apellido = prompt("Ingrese su apellido:");
-    const email = prompt("Ingrese su correo electrónico:");
-
-    if (nombre && apellido && email) {
-        const total = calcularTotal().toFixed(2);
-        const recibo = `
-            Recibo de Compra:
-            Nombre: ${nombre}
-            Apellido: ${apellido}
-            Email: ${email}
-            Total: $${total}
-        `;
-        alert(recibo);
-    } else {
-        alert("Por favor, complete todos los campos.");
-    }
+    
+    solicitarDatos(); // Llamamos a la función de solicitar datos
 }
+
+function manejarPago() {
+    const carrito = obtenerCarrito();
+    if (carrito.length === 0) {
+        return;
+    }
+    
+    solicitarDatos(); 
+}
+
+function solicitarDatos() {
+    Swal.fire({
+        title: 'Bienvenido!',
+        text: 'Ingresa Tus Datos',
+        footer: 'Esta información es obligatoria para continuar con la compra',
+        html: `
+            <input id="nombre" class="swal2-input" placeholder="Nombre">
+            <input id="apellido" class="swal2-input" placeholder="Apellido">
+            <input id="email" class="swal2-input" placeholder="Email">
+        `,
+        focusConfirm: false,
+        preConfirm: () => {
+            const nombre = document.getElementById('nombre').value;
+            const apellido = document.getElementById('apellido').value;
+            const email = document.getElementById('email').value;
+            if (!nombre || !apellido || !email) {
+                Swal.showValidationMessage('Por favor, complete todos los campos!');
+                return false; 
+            }
+            return { nombre, apellido, email };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const { nombre, apellido, email } = result.value;
+            const total = calcularTotal().toFixed(2);
+            const recibo = `
+                <strong>Recibo de Compra:</strong><br>
+                Nombre: ${nombre}<br>
+                Apellido: ${apellido}<br>
+                Email: ${email}<br>
+                Total: $${total}
+            `;
+            
+            // Mostrar recibo con botones de Avanzar y Cancelar
+            Swal.fire({
+                title: 'Revisa tus Datos',
+                html: recibo,
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonText: 'Avanzar con la compra',
+                cancelButtonText: 'Cancelar compra'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire('¡Felicitaciones!', 'Tu compra fue realizada con éxito.', 'success');
+                } else {
+                  Swal.fire('Compra Cancelada', 'La operación ha sido cancelada.', 'info');
+                }
+            });
+        }
+    });
+} 
 
 function actualizarContadorCarrito() {
     const contador = document.getElementById("contador-carrito");
