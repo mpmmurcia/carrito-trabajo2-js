@@ -82,7 +82,7 @@ function manejarPago() {
         return;
     }
     
-    solicitarDatos(); 
+    solicitarDatos();
 }
 
 function solicitarDatos() {
@@ -102,7 +102,7 @@ function solicitarDatos() {
             const email = document.getElementById('email').value;
             if (!nombre || !apellido || !email) {
                 Swal.showValidationMessage('Por favor, complete todos los campos!');
-                return false; 
+                return false;
             }
             return { nombre, apellido, email };
         }
@@ -128,14 +128,17 @@ function solicitarDatos() {
                 cancelButtonText: 'Cancelar compra'
             }).then((result) => {
                 if (result.isConfirmed) {
+                    // Aquí se vacía el carrito después de la compra exitosa
                     Swal.fire('¡Felicitaciones!', 'Tu compra fue realizada con éxito.', 'success');
+                    vaciarCarrito(); // Vaciar carrito después de la compra
                 } else {
-                  Swal.fire('Compra Cancelada', 'La operación ha sido cancelada.', 'info');
+                    Swal.fire('Compra Cancelada', 'La operación ha sido cancelada.', 'info');
                 }
             });
         }
     });
-} 
+}
+ 
 
 function actualizarContadorCarrito() {
     const contador = document.getElementById("contador-carrito");
